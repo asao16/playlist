@@ -1,0 +1,109 @@
+.body {
+  position: relative;
+  height: 100vh;
+  max-width: 350px;
+  background: linear-gradient(180deg, #00F5ED 0%, #0BB4E1 29.4%, #00527C 58.4%, #02324D 80.4%, #05121F 100%);
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  padding: 10px  2vw 1vh 2vw;
+  box-sizing: border-box;
+  justify-content: center;
+}
+
+#titulo {
+  margin-top: 1vh;
+  height: 46%;
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+}
+
+.myMusic {
+  font-family: 'Inspiration', cursive;
+  margin: 0 auto;
+  font-style: normal;
+  padding-bottom: 50px;
+  font-weight: 400;
+  font-size: 64px;
+  line-height: 81px;
+  text-align: center;
+  color: #000000;
+  transform: rotate(-20deg);
+}
+
+h2 {
+  margin: 0 auto;
+  font-family: 'Inter', serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  color: #000000;
+}
+
+.forms {
+  display: flex;
+  flex-direction: column;
+  height: 50hv;
+  margin-top: 40px;
+}
+
+.input-group {
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
+}
+
+.email, .pass {
+  border-radius: 8px;
+  background: #D8D8D8;
+  margin-bottom: 10px;
+  height: 56px;
+}
+
+.email:focus, .pass:focus{
+  outline: none;
+}
+
+
+.email-label, .pass-label {
+  font-family: 'Inter', serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  color: #000000;
+  margin-bottom: 1px;
+}
+
+.my-button {
+  --background: transparent;
+  --border: 2px solid #00C5FA;
+  --color: #00C5FA;
+  --border-radius: 8px;
+  --font-family: 'Inter', serif;
+  --font-size: 14px;
+  width: 98%;
+  margin: 100px auto 140px auto;
+  height: 56px;
+}
+
+#registro {
+  position: relative;
+  margin-bottom: 1hv;
+  font-family: 'Inter', serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  text-align: center;
+  color: #00C7FC;
+}
+
+/* Enlace externo */
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
