@@ -1,33 +1,102 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>playlist</ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">playlist</ion-title>
-    </ion-toolbar>
-  </ion-header>
-</ion-content>
-<!--cdvsvdvdbvdvd-->
-<ion-header>
-  <ion-toolbar>
-    <ion-title>Mi Playlist</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content class="ion-padding">
+  <div class="header">
+    <ion-thumbnail  style="--size: 140px;">
+      <img style="--size: 14vh;" alt="miniatura" ngSrc="../../../assets/playlist/playlist.svg" height="178"
+           width="183"/>
+    </ion-thumbnail>
+    <h3>PUBLIC PLAYLIST</h3>
+    <h1>Liked Songs</h1>
+    <div class="header-buttons">
+      <ion-button shape="round" style="--background: white;height: 6vh;width: 6vh;">
+        <ion-icon src="../../../assets/playlist/play.svg" slot="icon-only" style="color:black; margin-left: 6px;height: 4vh;width: 4vh"></ion-icon>
+      </ion-button>
+      <ion-button fill="clear">
+        <ion-icon src="../../../assets/playlist/shuffle-sharp.svg" slot="icon-only"
+                  style="height: 9vh;width: 9vh"></ion-icon>
+      </ion-button>
+    </div>
+  </div>
+
+  <div class="lista-encabezado">
+    <span>#</span>
+    <span style="margin-left: 105px;">TITLE</span>
+    <span style="margin-left: 39%;">ALBUM</span>
+  </div>
+  <hr style="background: #002949;border: 0">
+  <!-- Lista de canciones -->
   <ion-list>
-    <ion-item *ngFor="let song of songs">
-      <ion-thumbnail slot="start">
-        <img [src]="song.image">
+    <ion-item *ngFor="let song of songs" (click)="playSong(song)">
+      <span>{{song.id}}</span>
+      <ion-thumbnail style="margin-left: 28px; margin-right: 21px;">
+        <img [ngSrc]="song.cover" alt="Portada de {{ song.title }}" width="52" height="52">
       </ion-thumbnail>
-      <ion-label>
+      <ion-label >
         <h2>{{ song.title }}</h2>
         <p>{{ song.artist }}</p>
       </ion-label>
+      <ion-label><p>{{ song.album }}</p></ion-label>
+<!--      <ion-icon *ngIf="currentSong?.id === song.id" src="../../../assets/playlist/musical-notes.svg" color="primary"></ion-icon>-->
     </ion-item>
   </ion-list>
+
+  <!-- Reproductor -->
+  <div class="player" *ngIf="currentSong">
+    <div class="esquina-izquierda">
+      <div class="miniatura">
+        <ion-thumbnail slot="start" style="--size: 8vh">
+          <img [ngSrc]="currentSong.cover" alt="Portada de {{ currentSong.title }}" height="8" width="8">
+        </ion-thumbnail>
+      </div>
+      <div class="titulo-album">
+        <ion-label>
+          <h2 style="color:#fff">{{ currentSong.title }}</h2>
+          <p id="artista-reproductor" style="color:#C9C9C9">{{ currentSong.artist }}</p>
+        </ion-label>
+      </div>
+    </div>
+
+    <!-- Controles de reproducción -->
+    <div class="controles">
+      <div>
+      <ion-button fill="clear" (click)="nextSong()">
+        <ion-icon src="../../../assets/playlist/shuffle-sharp.svg" style="color: #fff"></ion-icon>
+      </ion-button>
+      <ion-button fill="clear" (click)="previousSong()">
+        <ion-icon src="../../../assets/playlist/play-skip-back-sharp.svg" style="color: #fff"></ion-icon>
+      </ion-button>
+      <ion-button  (click)="togglePlay()" style="--background: white" shape="round">
+        <ion-icon [src]="isPlaying ? '../../../assets/playlist/pause-sharp.svg' : '../../../assets/playlist/play.svg'" style="color: #000;margin-left: 1px"
+        slot="icon-only"></ion-icon>
+      </ion-button>
+      <ion-button fill="clear" (click)="nextSong()">
+        <ion-icon src="../../../assets/playlist/play-skip-forward-sharp.svg" style="color: #fff"></ion-icon>
+      </ion-button>
+      <ion-button fill="clear" (click)="toggleRepeat()">
+        <ion-icon src="../../../assets/playlist/repeat-sharp.svg"></ion-icon>
+      </ion-button>
+      </div>
+      <!-- Barra de progreso -->
+      <div>
+        <ion-range
+          [(ngModel)]="progress"
+          (ionChange)="seekTo($event)"
+          min="0"
+          [max]="duration"
+          step="1"
+          style="padding: 0 16px;"
+        >
+          <ion-label style="color:#A6A6A6" slot="start">{{ formatTime(progress) }}</ion-label>
+          <ion-label style="color:#A6A6A6" slot="end">{{ formatTime(duration) }}</ion-label>
+        </ion-range>
+      </div>
+    </div>
+
+    <div class="volumen">
+      <ion-button fill="clear" (click)="volumen()">
+        <ion-icon src="../../../assets/playlist/volume-high.svg" style="color:#fff;" slot="icon-only"></ion-icon>
+      </ion-button>
+    </div>
+  </div>
+
+
 </ion-content>

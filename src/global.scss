@@ -35,3 +35,16 @@
 /* @import "@ionic/angular/css/palettes/dark.always.css"; */
 /* @import "@ionic/angular/css/palettes/dark.class.css"; */
 @import '@ionic/angular/css/palettes/dark.system.css';
+
+
+.material-symbols {
+  font-family: Material Symbols Rounded, sans-serif;
+
+  &.outlined {
+    font-variation-settings: 'Fill' 0, 'wght' 400, 'GRAD' 0, 'opsz'48 !important;
+  }
+
+  &.filled{
+    font-variation-settings: 'Fill' 1, 'wght' 400, 'GRAD' 0, 'opsz'48 !important;
+  }
+}
