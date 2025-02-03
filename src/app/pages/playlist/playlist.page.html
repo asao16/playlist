@@ -1,33 +1,55 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>playlist</ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">playlist</ion-title>
-    </ion-toolbar>
-  </ion-header>
-</ion-content>
-<!--cdvsvdvdbvdvd-->
-<ion-header>
-  <ion-toolbar>
-    <ion-title>Mi Playlist</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content class="ion-padding">
+  <div class="header">
+    <ion-thumbnail alt="foto" src="C:\Users\guill\WebstormProjects\myApp\src\assets\playlist\playlist.svg"
+    style="--size: 140px;"></ion-thumbnail>
+    <h3>PUBLIC PLAYLIST</h3>
+    <h1>Liked Songs</h1>
+    <div class="header-buttons">
+      <ion-button><ion-icon class="icon-button" slot="icon-only" src="C:\Users\guill\WebstormProjects\myApp\src\assets\playlist\play.svg"></ion-icon></ion-button>
+      <ion-button></ion-button>
+    </div>
+  </div>
+
+  <div class="lista-encabezado">
+    <span>#</span>
+    <span>TITLE</span>
+    <span>ALBUM</span>
+  </div>
+  <hr>
+  <!-- Lista de canciones -->
   <ion-list>
-    <ion-item *ngFor="let song of songs">
+    <ion-item *ngFor="let song of songs" (click)="playSong(song)">
       <ion-thumbnail slot="start">
-        <img [src]="song.image">
+        <img [src]="song.cover" alt="Portada de {{ song.title }}">
       </ion-thumbnail>
       <ion-label>
         <h2>{{ song.title }}</h2>
         <p>{{ song.artist }}</p>
       </ion-label>
+      <ion-icon *ngIf="currentSong?.id === song.id" name="musical-notes" color="primary"></ion-icon>
     </ion-item>
   </ion-list>
+
+  <!-- Reproductor -->
+  <div class="player" *ngIf="currentSong">
+    <ion-item>
+      <ion-thumbnail slot="start">
+        <img [src]="currentSong.cover" alt="Portada de {{ currentSong.title }}">
+      </ion-thumbnail>
+      <ion-label>
+        <h2>{{ currentSong.title }}</h2>
+        <p>{{ currentSong.artist }}</p>
+      </ion-label>
+    </ion-item>
+
+    <!-- Controles de reproducción -->
+    <div class="controls">
+      <ion-button fill="clear" (click)="togglePlay()">
+        <ion-icon [name]="isPlaying ? 'pause' : 'play'"></ion-icon>
+      </ion-button>
+      <ion-button fill="clear" (click)="nextSong()">
+        <ion-icon name="skip-forward"></ion-icon>
+      </ion-button>
+    </div>
+  </div>
 </ion-content>

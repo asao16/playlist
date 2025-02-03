@@ -1,0 +1,56 @@
+ion-content {
+  --background: linear-gradient(180deg, #02F4ED 20.36%, #02B7D3 40.16%, #0F6B8A 52.61%, #000000 79.64%);
+  color: #fff; /* Texto blanco */
+}
+
+ion-list {
+  background: transparent;
+}
+
+ion-item {
+  --background: transparent;
+  --color: #fff;
+  border-bottom: 1px solid #333; /* Línea divisoria entre canciones */
+}
+
+ion-thumbnail {
+  --size: 60px; /* Tamaño de la portada */
+  --border-radius: 8px; /* Bordes redondeados */
+}
+
+.player {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #1e1e1e; /* Fondo del reproductor */
+  padding: 10px;
+  border-top: 1px solid #333;
+}
+
+.controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+}
+
+ion-button {
+  --color: #fff; /* Color de los botones */
+}
+
+.header{
+  display: flex;
+  flex-direction: column;
+}
+.header-buttons{
+  display: flex;
+  flex-direction:row;
+}
+
+
+.lista-encabezado {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
